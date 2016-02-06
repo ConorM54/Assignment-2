@@ -31,17 +31,17 @@ void keyPressed()
         GameSelected = !GameSelected;
         displayMenu();
       }
-      if(keyCode ==ENTER || keyCode == ' ')
-      {
+    }
+    if(key == ENTER || key == ' ')
+    {
         if(GameSelected)
         {
-          //LaunchGame
+          println("GAME");
         }
         else
         {
-          //Highscore
+          println("Highscore");
         }
-      }
     }
   }
 }
