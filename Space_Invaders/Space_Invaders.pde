@@ -15,7 +15,7 @@ void setup()
   
   for(int i = 0; i< 3 ; i++)
   {
-    AIShip invader = new AIShip(200 + (i * 50) , 200);
+    AIShip invader = new AIShip(200 + (i * 75) , 200);
     invaders.add(invader);
     gameObjects.add(invader);
   }
@@ -37,10 +37,19 @@ void draw()
       if(in.pos.x > width - 15)
       {
         goRightAI = false;
+        for(int j = invaders.size() - 1 ; j >= 0  ;j --)
+        {
+          invaders.get(j).goDown();
+        }
+    
       }
       if(in.pos.x < 15)
       {
         goRightAI = true;
+        for(int j = invaders.size() - 1 ; j >= 0  ;j --)
+        {
+          invaders.get(j).goDown();
+        }
       }
     } 
         

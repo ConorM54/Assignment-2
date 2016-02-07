@@ -24,9 +24,13 @@ class AIShip extends Ship
     {
       pos.sub(forward);
     }
-    
   }
-  
+  void goDown()
+  {
+    PVector down = new PVector(0, 25);
+    
+    pos.add(down);
+  }
   void render()
   {
     pushMatrix(); // reset the translation and rotation
