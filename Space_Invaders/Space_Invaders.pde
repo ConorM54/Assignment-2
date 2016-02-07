@@ -13,9 +13,12 @@ void setup()
   Ship ship = new Ship( 'A', 'D', ' ', width/2, height - 20 , Green);
   gameObjects.add(ship);
   
-  AIShip invader = new AIShip(200, 200);
-  invaders.add(invader);
-  gameObjects.add(invader);
+  for(int i = 0; i< 3 ; i++)
+  {
+    AIShip invader = new AIShip(200 + (i * 50) , 200);
+    invaders.add(invader);
+    gameObjects.add(invader);
+  }
   
   displayMenu();
 }
