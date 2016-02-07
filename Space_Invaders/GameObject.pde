@@ -1,4 +1,4 @@
-/*abstract class GameObject
+abstract class GameObject
 {
   PVector pos;
   PVector forward;
@@ -26,4 +26,4 @@
   abstract void update();  
   abstract void render();
   
-}*/
+}
