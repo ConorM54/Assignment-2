@@ -9,7 +9,7 @@ void setup()
 {
   size(600,600);
   Green = color(50 ,255, 10);
-  Ship ship = new Ship( 'A', 'D', ' ', width/2, height - 20 , color(0, 255, 255));
+  Ship ship = new Ship( 'A', 'D', ' ', width/2, height - 20 , Green);
   gameObjects.add(ship);
   
   displayMenu();
