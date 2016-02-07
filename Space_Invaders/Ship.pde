@@ -32,17 +32,35 @@ class Ship extends GameObject
     {
       pos.y += 0.1f;
     }
+    
+     if (pos.x < 0)
+    {
+      pos.x = width;
+    }
+    
+    if (pos.x > width)
+    {
+      pos.x = 0;
+    }
+    
+    if (pos.y < 0)
+    {
+      pos.y = height;
+    }
+    
+    if (pos.y > height)
+    {
+      pos.y = 0;
+    }
   }
   
   void render()
   {
     pushMatrix(); // reset the translation and rotation
     translate(pos.x, pos.y); 
-    stroke(255);
-    line(- halfW, halfW, 0, - halfW);
-    line(0, - halfW, halfW, halfW);
-    line(halfW, halfW, 0, 0);
-    line(- halfW, halfW, 0, 0);
+    stroke(c);
+    rectMode(CORNERS);
+    rect(-halfW, -5, halfW, 5);
     popMatrix();
   }
   
