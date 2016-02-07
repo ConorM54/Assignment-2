@@ -26,21 +26,21 @@ class Ship extends GameObject
   {
     if (keys[left])
     {
-      pos.x -= 0.1f;
+      pos.x -= 3f;
     }
     if (keys[right])
     {
-      pos.y += 0.1f;
+      pos.x += 3f;
     }
     
-     if (pos.x < 0)
+     if (pos.x - halfW < 0)
     {
-      pos.x = width;
+      pos.x = 0 + halfW;
     }
     
-    if (pos.x > width)
+    if (pos.x + halfW > width)
     {
-      pos.x = 0;
+      pos.x = width - halfW;
     }
     
     if (pos.y < 0)
