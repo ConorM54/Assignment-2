@@ -11,14 +11,11 @@ void setup()
   size(600,600);
   Green = color(50 ,255, 10);
   Ship ship = new Ship( 'A', 'D', ' ', width/2, height - 20 , Green);
+  Alien = loadShape("alien.svg");
+
   gameObjects.add(ship);
-  
-  for(int i = 0; i< 3 ; i++)
-  {
-    AIShip invader = new AIShip(200 + (i * 75) , 200);
-    invaders.add(invader);
-    gameObjects.add(invader);
-  }
+  newWave();
+
   
   displayMenu();
 }
@@ -93,6 +90,20 @@ void keyPressed()
         {
           println("Highscore");
         }
+    }
+  }
+}
+
+void newWave()
+{
+  
+  for( int j = 0 ; j < 5; j++)
+  {
+    for(int i = 0; i< 7 ; i++)
+    {
+      AIShip invader = new AIShip(15 +(75*i ), 100 + (50 * j));
+      invaders.add(invader);
+      gameObjects.add(invader);
     }
   }
 }

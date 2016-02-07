@@ -10,7 +10,7 @@ class AIShip extends Ship
   {
     this.pos.x = startX;
     this.pos.y = startY;
-    forward = new PVector(1, 0);
+    forward = new PVector(.5f, 0);
     
   }
   
@@ -27,7 +27,7 @@ class AIShip extends Ship
   }
   void goDown()
   {
-    PVector down = new PVector(0, 25);
+    PVector down = new PVector(0, 3);
     
     pos.add(down);
   }
@@ -37,10 +37,7 @@ class AIShip extends Ship
     translate(pos.x, pos.y); 
     stroke(Green);
     fill(Green);
-    rectMode(CORNERS);
-    rect(-halfW, -5, halfW, 5);
-    rectMode(CENTER);
-    rect(0,-5, 4, 10);
+    shape(Alien, 0, 0, w, 10);
     popMatrix();
   }
   

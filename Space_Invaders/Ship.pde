@@ -35,6 +35,16 @@ class Ship extends GameObject
     {
        pos.add(PVector.mult(forward, speed));
     }
+    if (keys[fire] )
+    {
+      Blast blast = new Blast();
+      blast.pos.x = pos.x;
+      blast.pos.y = pos.y;
+      blast.pos.add(PVector.mult(forward, 26));
+      blast.c = c;
+      gameObjects.add(blast);
+      
+    }
     
      if (pos.x - halfW < 0)
     {
