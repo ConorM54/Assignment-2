@@ -24,13 +24,16 @@ class Ship extends GameObject
   
   void update()
   {
+    forward.x = 1;
+    forward.y = 0;
+    
     if (keys[left])
     {
-      pos.x -= 3f;
+      pos.sub(forward);
     }
     if (keys[right])
     {
-      pos.x += 3f;
+      pos.add(forward);
     }
     
      if (pos.x - halfW < 0)
