@@ -19,21 +19,21 @@ class Ship extends GameObject
     this.right = right;
     this.fire = fire;
     this.c = c;
+    forward = new PVector(1, 0);
     lives = 10;
   }
   
   void update()
   {
-    forward.x = 1;
-    forward.y = 0;
+    
     
     if (keys[left])
     {
-      pos.sub(forward);
+      pos.sub(PVector.mult(forward, speed));
     }
     if (keys[right])
     {
-      pos.add(forward);
+       pos.add(PVector.mult(forward, speed));
     }
     
      if (pos.x - halfW < 0)
