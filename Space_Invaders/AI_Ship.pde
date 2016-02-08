@@ -6,28 +6,40 @@ class AIShip extends Ship
   {
     
   }
-  AIShip(float startX, float startY)
+  AIShip(float startX, float startY, color c)
   {
     this.pos.x = startX;
     this.pos.y = startY;
-    forward = new PVector(.5f, 0);
+    this.c = c;
+    forward = new PVector(6f, 0);
+    w = 40;
+    halfW  = w/2;
+    H = 10;
+    halfH = H/2;
     
   }
   
   void update()
   {
-    if(goRightAI)
+    if(elapsed >12)
     {
-      pos.add(forward);
+      if(goRightAI )
+      {
+        pos.add(forward);
+        
+      }
+      else
+      {
+        pos.sub(forward);
+      }
+      elapsed =0;
     }
-    else
-    {
-      pos.sub(forward);
-    }
+    elapsed++;
   }
+  
   void goDown()
   {
-    PVector down = new PVector(0, 3);
+    PVector down = new PVector(0, 1);
     
     pos.add(down);
   }
@@ -35,9 +47,13 @@ class AIShip extends Ship
   {
     pushMatrix(); // reset the translation and rotation
     translate(pos.x, pos.y); 
-    stroke(Green);
-    fill(Green);
-    shape(Alien, 0, 0, w, 10);
+    stroke(c);
+    fill(c);
+    rectMode(CORNERS);
+    rect(-halfW, -H, halfW, halfH);
+    rect(-halfW, halfH, -halfW +halfH, H);
+    rect(halfW, halfH, halfW -halfH, H);
+    
     popMatrix();
   }
   

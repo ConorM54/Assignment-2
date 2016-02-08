@@ -11,7 +11,6 @@ void setup()
   size(600,600);
   Green = color(50 ,255, 10);
   Ship ship = new Ship( 'A', 'D', ' ', width/2, height - 20 , Green);
-  Alien = loadShape("alien.svg");
 
   gameObjects.add(ship);
   newWave();
@@ -31,7 +30,7 @@ void draw()
     for(int i = invaders.size() - 1 ; i >= 0  ;i --)
     {
       AIShip in = invaders.get(i);
-      if(in.pos.x > width - 15)
+      if(in.pos.x > width - in.halfW)
       {
         goRightAI = false;
         for(int j = invaders.size() - 1 ; j >= 0  ;j --)
@@ -40,7 +39,7 @@ void draw()
         }
     
       }
-      if(in.pos.x < 15)
+      if(in.pos.x < in.halfW)
       {
         goRightAI = true;
         for(int j = invaders.size() - 1 ; j >= 0  ;j --)
@@ -57,7 +56,7 @@ void draw()
       go.render();
     }
   }
-  
+  checkCollisions()
 }
 
 void keyReleased()
@@ -94,14 +93,41 @@ void keyPressed()
   }
 }
 
+void checkCollisions()
+{
+  for(int i = gameObjects.size() - 1 ; i >= 0  ;i --)
+    {
+      GameObject go = gameObjects.get(i);
+      if(go instanceof Blast)
+      {
+        for(int  = gameObjects.size() - 1 ; j >= 0   ;j --)
+        {
+          GameObject other = gameObjects.get(j);
+          if(other instanceof AIShip)
+          {
+            if(go.pos.dist(other.pos) < (other.halfH)
+            {
+              gameObjects.remove(other);
+              gameObjects.remove(go);
+            }
+          }
+        }
+      }
+    }
+}
+      
+
+        
+
 void newWave()
 {
   
   for( int j = 0 ; j < 5; j++)
   {
+    color shipColor = color(255, 0, (50 * j));
     for(int i = 0; i< 7 ; i++)
     {
-      AIShip invader = new AIShip(15 +(75*i ), 100 + (50 * j));
+      AIShip invader = new AIShip(15 +(50*i ), 100 + (30 * j), shipColor);
       invaders.add(invader);
       gameObjects.add(invader);
     }

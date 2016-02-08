@@ -4,6 +4,8 @@ class Ship extends GameObject
    char right;
    char fire;
    int lives;
+   int elapsed;
+   float H;
    
    Ship()
   {
@@ -21,6 +23,9 @@ class Ship extends GameObject
     this.c = c;
     forward = new PVector(1, 0);
     lives = 10;
+    H = 20;
+    halfH = H/2;
+    
   }
   
   void update()
@@ -35,14 +40,15 @@ class Ship extends GameObject
     {
        pos.add(PVector.mult(forward, speed));
     }
-    if (keys[fire] )
+    if (keys[fire] && elapsed >12 )
     {
       Blast blast = new Blast();
-      blast.pos.x = pos.x;
+      blast.pos.x = pos.x -halfW;
       blast.pos.y = pos.y;
       blast.pos.add(PVector.mult(forward, 26));
       blast.c = c;
       gameObjects.add(blast);
+      elapsed = 0;
       
     }
     
@@ -55,7 +61,7 @@ class Ship extends GameObject
     {
       pos.x = width - halfW;
     }
-    
+    elapsed++;
   }
   
   void render()
@@ -67,7 +73,7 @@ class Ship extends GameObject
     rectMode(CORNERS);
     rect(-halfW, -5, halfW, 5);
     rectMode(CENTER);
-    rect(0,-5, 4, 10);
+    rect(0,-5, 10, 10);
     popMatrix();
   }
   
