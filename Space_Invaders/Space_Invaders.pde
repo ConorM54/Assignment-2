@@ -56,7 +56,7 @@ void draw()
       go.render();
     }
   }
-  checkCollisions()
+  checkCollisions();
 }
 
 void keyReleased()
@@ -100,12 +100,12 @@ void checkCollisions()
       GameObject go = gameObjects.get(i);
       if(go instanceof Blast)
       {
-        for(int  = gameObjects.size() - 1 ; j >= 0   ;j --)
+        for(int  j= gameObjects.size() - 1 ; j >= 0   ;j --)
         {
           GameObject other = gameObjects.get(j);
           if(other instanceof AIShip)
           {
-            if(go.pos.dist(other.pos) < (other.halfH)
+            if(go.pos.dist(other.pos) < other.halfH)
             {
               gameObjects.remove(other);
               gameObjects.remove(go);

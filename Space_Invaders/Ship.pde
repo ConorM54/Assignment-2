@@ -5,7 +5,7 @@ class Ship extends GameObject
    char fire;
    int lives;
    int elapsed;
-   float H;
+  
    
    Ship()
   {
