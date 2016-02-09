@@ -35,7 +35,7 @@ class Ship extends GameObject
   void update()
   {
     
-    
+    println(elapsed);
     if (keys[left])
     {
       pos.sub(PVector.mult(forward, speed));
@@ -73,7 +73,12 @@ class Ship extends GameObject
   {
     pushMatrix(); // reset the translation and rotation
     translate(pos.x, pos.y); 
-   
+    stroke(c);
+    fill(c);
+    rectMode(CORNERS);
+    rect(-halfW, -5, halfW, 5);
+    rectMode(CENTER);
+    rect(0,-5, 10, 10);
     popMatrix();
   }
   

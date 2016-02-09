@@ -27,9 +27,11 @@ void draw()
     stroke(255, 0, 0);
     line(0, boundaryLine, width, boundaryLine);
     text(PlayerScore, 50, 50);
+    
     for (int i = invaders.size() - 1; i >= 0; i --)
     {
       AIShip in = invaders.get(i);
+      
       if (in.pos.x > width - in.halfW)
       {
         goRightAI = false;
@@ -38,6 +40,7 @@ void draw()
           invaders.get(j).goDown();
         }
       }
+      
       if (in.pos.x < in.halfW)
       {
         goRightAI = true;
@@ -55,8 +58,8 @@ void draw()
       go.render();
     }
     checkCollisions();
-    
-    if(counter % 240 == 0)
+
+    if (counter % 240 == 0)
     {
       int i = (int)random(0, invaders.size());
       invaders.get(i).shoot = true;
@@ -107,7 +110,7 @@ void checkCollisions()
     GameObject go = gameObjects.get(i);
     if (go instanceof Blast)
     {
-      
+
       for (int  j= gameObjects.size() - 1; j >= 0; j --)
       {
         GameObject other = gameObjects.get(j);
@@ -118,37 +121,38 @@ void checkCollisions()
             for (int  k= gameObjects.size() - 1; k >= 0; k --)
             {
               GameObject source = gameObjects.get(k);
-              
-                if(source instanceof Ship && ! (source instanceof AIShip))
+
+              if (source instanceof Ship && ! (source instanceof AIShip))
+              {
+                if ( ((Ship)source).name.equals(((Blast)go).name) )
                 {
-                  if( ((Ship)source).name.equals(((Blast)go).name) )
-                  {
-                      println(((Ship)source).name);
-                      println( ((Blast)go).name );
-                      PlayerScore = PlayerScore + ((AIShip)other).score;
-                     gameObjects.remove(go);
-                     gameObjects.remove(other);
-                      i=0;
-                      j=0;
-                  }
+                  println(((Ship)source).name);
+                  println( ((Blast)go).name );
+                  PlayerScore = PlayerScore + ((AIShip)other).score;
+                  gameObjects.remove(go);
+                  gameObjects.remove(other);
+                  i=0;
+                  j=0;
                 }
               }
             }
           }
-         if (other instanceof Ship && ! (other instanceof AIShip))
+        }
+        if (other instanceof Ship && ! (other instanceof AIShip))
         {
           if (go.pos.x >= other.pos.x -other.halfW  && go.pos.x < other.pos.x+ other.halfW   && go.pos.y < other.pos.y + other.halfH && go.pos.y > other.pos.y - other.halfH  )
           {
-            gameObjects.remove(go);
-            (Ship)other.lives--;
-            i=0;
-            j=0;
+             if (! ((Ship)other).name.equals(((Blast)go).name) )
+             {
+              gameObjects.remove(go);
+              ((Ship)other).lives--;
+              i=0;
+              j=0;
+             }
           }
         }
-            
-        }
       }
-  
+    }
   }
 }
 
