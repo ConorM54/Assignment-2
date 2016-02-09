@@ -2,12 +2,14 @@ boolean goRightAI = true;
 
 class AIShip extends Ship
 {
+  boolean shoot;
+  PVector down;
   
   AIShip()
   {
     
   }
-  AIShip(float startX, float startY, color c, float points, String name)
+  AIShip(float startX, float startY, color c, int points, String name)
   {
     this.pos.x = startX;
     this.pos.y = startY;
@@ -20,12 +22,14 @@ class AIShip extends Ship
     halfH = H/2;
     this.score = points;
     this.name = name;
+    shoot = false;
+    down = new PVector(0, 0.5);
     
   }
   
   void update()
   {
-    if(elapsed >12)
+    if(elapsed >60)
     {
       if(goRightAI )
       {
@@ -36,14 +40,25 @@ class AIShip extends Ship
       {
         pos.sub(forward);
       }
-      elapsed =0;
+      elapsed = 0;
+    }
+    if (shoot )
+    {
+      Blast blast = new Blast();
+      blast.pos.x = pos.x -halfW;
+      blast.pos.y = pos.y;
+      blast.forward = PVector.mult(down, 10);
+      blast.c = 255;
+      blast.name = name;
+      gameObjects.add(blast);
+      shoot = false;
     }
     elapsed++;
   }
   
   void goDown()
   {
-    PVector down = new PVector(0, 0.5);
+   
     
     pos.add(down);
   }

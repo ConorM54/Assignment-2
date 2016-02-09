@@ -3,9 +3,9 @@ boolean highscoreList = false;
 boolean GameSelected = true;
 ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
 ArrayList<AIShip> invaders = new ArrayList<AIShip>();
-//Height at which invaders win
+int counter = 0;
 boolean[] keys = new boolean[512];
-float PlayerScore;
+int PlayerScore;
 color Green;
 void setup()
 {
@@ -15,8 +15,6 @@ void setup()
 
   gameObjects.add(ship);
   newWave();
-
-
   displayMenu();
 }
 
@@ -28,6 +26,7 @@ void draw()
     background(0);
     stroke(255, 0, 0);
     line(0, boundaryLine, width, boundaryLine);
+    text(PlayerScore, 50, 50);
     for (int i = invaders.size() - 1; i >= 0; i --)
     {
       AIShip in = invaders.get(i);
@@ -56,6 +55,14 @@ void draw()
       go.render();
     }
     checkCollisions();
+    
+    if(counter % 240 == 0)
+    {
+      int i = (int)random(0, invaders.size());
+      invaders.get(i).shoot = true;
+      counter =0;
+    }
+    counter++;
   }
 }
 
@@ -100,6 +107,7 @@ void checkCollisions()
     GameObject go = gameObjects.get(i);
     if (go instanceof Blast)
     {
+      
       for (int  j= gameObjects.size() - 1; j >= 0; j --)
       {
         GameObject other = gameObjects.get(j);
@@ -107,16 +115,40 @@ void checkCollisions()
         {
           if (go.pos.x >= other.pos.x -other.halfW  && go.pos.x < other.pos.x+ other.halfW   && go.pos.y < other.pos.y + other.halfH && go.pos.y > other.pos.y - other.halfH  )
           {
-            PlayerScore = PlayerScore + ((AIShip)other).score;
-         
+            for (int  k= gameObjects.size() - 1; k >= 0; k --)
+            {
+              GameObject source = gameObjects.get(k);
+              
+                if(source instanceof Ship && ! (source instanceof AIShip))
+                {
+                  if( ((Ship)source).name.equals(((Blast)go).name) )
+                  {
+                      println(((Ship)source).name);
+                      println( ((Blast)go).name );
+                      PlayerScore = PlayerScore + ((AIShip)other).score;
+                     gameObjects.remove(go);
+                     gameObjects.remove(other);
+                      i=0;
+                      j=0;
+                  }
+                }
+              }
+            }
+          }
+         if (other instanceof Ship && ! (other instanceof AIShip))
+        {
+          if (go.pos.x >= other.pos.x -other.halfW  && go.pos.x < other.pos.x+ other.halfW   && go.pos.y < other.pos.y + other.halfH && go.pos.y > other.pos.y - other.halfH  )
+          {
             gameObjects.remove(go);
-            gameObjects.remove(other);
+            (Ship)other.lives--;
             i=0;
             j=0;
           }
         }
+            
+        }
       }
-    }
+  
   }
 }
 
@@ -131,7 +163,7 @@ void newWave()
     color shipColor = color(255, 0, (50 * j));
     for (int i = 0; i< 7; i++)
     {
-      AIShip invader = new AIShip(15 +(50*i ), 100 + (30 * j), shipColor, (2000f - (300f *j)), "AI");
+      AIShip invader = new AIShip(20 +(50*i ), 100 + (30 * j), shipColor, (2000 - (300 *j)), "AI");
       invaders.add(invader);
       gameObjects.add(invader);
     }
