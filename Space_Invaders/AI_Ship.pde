@@ -2,15 +2,17 @@ boolean goRightAI = true;
 
 class AIShip extends Ship
 {
+  float points;
   AIShip()
   {
     
   }
-  AIShip(float startX, float startY, color c)
+  AIShip(float startX, float startY, color c, float points)
   {
     this.pos.x = startX;
     this.pos.y = startY;
     this.c = c;
+    this.points = points;
     forward = new PVector(6f, 0);
     w = 40;
     halfW  = w/2;
@@ -53,6 +55,11 @@ class AIShip extends Ship
     rect(-halfW, -H, halfW, halfH);
     rect(-halfW, halfH, -halfW +halfH, H);
     rect(halfW, halfH, halfW -halfH, H);
+    rectMode(CENTER);
+    fill(0);
+    
+    rect(-7, -4, 5, 5);
+    rect(7, -4, 5,5);
     
     popMatrix();
   }

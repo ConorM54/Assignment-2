@@ -40,7 +40,7 @@ class Ship extends GameObject
     {
        pos.add(PVector.mult(forward, speed));
     }
-    if (keys[fire] && elapsed >12 )
+    if (keys[fire] && elapsed >60 )
     {
       Blast blast = new Blast();
       blast.pos.x = pos.x -halfW;
