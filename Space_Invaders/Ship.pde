@@ -5,6 +5,8 @@ class Ship extends GameObject
    char fire;
    int lives;
    int elapsed;
+   float score;
+   String name;
   
    
    Ship()
@@ -13,7 +15,7 @@ class Ship extends GameObject
     super(width * 0.5f, height  * 0.5f, 50);       
   }
   
-  Ship( char left, char right, char fire, float startX, float startY, color c)
+  Ship( char left, char right, char fire, float startX, float startY, color c, String name)
   {
     super(startX, startY, 50);
     
@@ -25,6 +27,8 @@ class Ship extends GameObject
     lives = 10;
     H = 20;
     halfH = H/2;
+    score = 0;
+    this.name = name;
     
   }
   
@@ -47,6 +51,7 @@ class Ship extends GameObject
       blast.pos.y = pos.y;
       blast.pos.add(PVector.mult(forward, 26));
       blast.c = c;
+      blast.name = name;
       gameObjects.add(blast);
       elapsed = 0;
       

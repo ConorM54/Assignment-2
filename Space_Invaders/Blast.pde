@@ -1,5 +1,7 @@
 class Blast extends GameObject
 {
+  String name;
+  
   Blast()
   {
     forward = new PVector(0, -005);

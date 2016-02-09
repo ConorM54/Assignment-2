@@ -2,22 +2,24 @@ boolean goRightAI = true;
 
 class AIShip extends Ship
 {
-  float points;
+  
   AIShip()
   {
     
   }
-  AIShip(float startX, float startY, color c, float points)
+  AIShip(float startX, float startY, color c, float points, String name)
   {
     this.pos.x = startX;
     this.pos.y = startY;
     this.c = c;
-    this.points = points;
+    this.score = points;
     forward = new PVector(6f, 0);
     w = 40;
     halfW  = w/2;
     H = 10;
     halfH = H/2;
+    this.score = points;
+    this.name = name;
     
   }
   
@@ -41,7 +43,7 @@ class AIShip extends Ship
   
   void goDown()
   {
-    PVector down = new PVector(0, 1);
+    PVector down = new PVector(0, 0.5);
     
     pos.add(down);
   }

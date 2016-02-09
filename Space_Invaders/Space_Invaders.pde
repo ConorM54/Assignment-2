@@ -5,13 +5,13 @@ ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
 ArrayList<AIShip> invaders = new ArrayList<AIShip>();
 //Height at which invaders win
 boolean[] keys = new boolean[512];
-float score;
+float PlayerScore;
 color Green;
 void setup()
 {
   size(600, 600);
   Green = color(50, 255, 10);
-  Ship ship = new Ship( 'A', 'D', ' ', width/2, height - 20, Green);
+  Ship ship = new Ship( 'A', 'D', ' ', width/2, height - 20, Green, "Player One");
 
   gameObjects.add(ship);
   newWave();
@@ -82,7 +82,7 @@ void keyPressed()
     {
       if (GameSelected)
       {
-        score =0;
+        PlayerScore = 0;
         gameLaunched = true;
         println("GAME");
       } else
@@ -107,8 +107,8 @@ void checkCollisions()
         {
           if (go.pos.x >= other.pos.x -other.halfW  && go.pos.x < other.pos.x+ other.halfW   && go.pos.y < other.pos.y + other.halfH && go.pos.y > other.pos.y - other.halfH  )
           {
-           
-            //score = score + other.points;
+            PlayerScore = PlayerScore + ((AIShip)other).score;
+         
             gameObjects.remove(go);
             gameObjects.remove(other);
             i=0;
@@ -131,7 +131,7 @@ void newWave()
     color shipColor = color(255, 0, (50 * j));
     for (int i = 0; i< 7; i++)
     {
-      AIShip invader = new AIShip(15 +(50*i ), 100 + (30 * j), shipColor, (2000 - (300 *j)) );
+      AIShip invader = new AIShip(15 +(50*i ), 100 + (30 * j), shipColor, (2000f - (300f *j)), "AI");
       invaders.add(invader);
       gameObjects.add(invader);
     }
