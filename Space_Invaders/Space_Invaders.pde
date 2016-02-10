@@ -10,6 +10,7 @@ int highscore;
 color Green;
 float boundaryLine;
 PFont font;
+float initSpeed;
 void setup()
 {
   size(600, 600);
@@ -17,7 +18,8 @@ void setup()
   Ship ship = new Ship( 'A', 'D', ' ', width/2, height - 20, Green, "Player One");
   boundaryLine= height-50;
   gameObjects.add(ship);
-  newWave();
+  initSpeed = 10f;
+  newWave(initSpeed);
   loadHighscore();
   //newBarrier(width/2, 500, 20, 50);
   
@@ -100,6 +102,7 @@ void checkCollisions()
                   PlayerScore = PlayerScore + ((AIShip)other).score;
                   gameObjects.remove(go);
                   gameObjects.remove(other);
+                  invaders.remove(other);
                   i=0;
                   j=0;
                 }
@@ -158,7 +161,7 @@ void newBarrier(float x, float y, float h, float w)
 }
 
 
-void newWave()
+void newWave(float AIspeed)
 {
 
   for ( int j = 0; j < 5; j++)
@@ -166,7 +169,7 @@ void newWave()
     color shipColor = color(255, 0, (50 * j));
     for (int i = 0; i< 7; i++)
     {
-      AIShip invader = new AIShip(20 +(50*i ), 100 + (30 * j), shipColor, (2000 - (300 *j)), "AI");
+      AIShip invader = new AIShip(30 +(50*i ), 100 + (30 * j), shipColor, (2000 - (300 *j)), "AI", AIspeed);
       invaders.add(invader);
       gameObjects.add(invader);
     }

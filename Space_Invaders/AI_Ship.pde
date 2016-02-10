@@ -8,13 +8,13 @@ class AIShip extends Ship
   {
     
   }
-  AIShip(float startX, float startY, color c, int points, String name)
+  AIShip(float startX, float startY, color c, int points, String name, float AIspeed)
   {
     this.pos.x = startX;
     this.pos.y = startY;
     this.c = c;
     this.score = points;
-    forward = new PVector(6f, 0);
+    forward = new PVector(AIspeed, 0);
     w = 40;
     halfW  = w/2;
     H = 10;

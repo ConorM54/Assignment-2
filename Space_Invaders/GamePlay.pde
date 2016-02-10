@@ -66,4 +66,14 @@ void launchGame()
       counter =0;
     }
     counter++;
+    println(invaders.size());
+    if(invaders.size() == 0)
+    {
+      initSpeed = initSpeed * 1.5;
+      newWave(initSpeed);
+    }
+    if(invaders.size() == 1)
+    {
+      invader.get(0).AISpeed = 23;
+    }
 }
