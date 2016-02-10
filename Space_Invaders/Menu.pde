@@ -1,7 +1,7 @@
 void displayMenu()
 {
     
-    PFont font;
+    
     
     background(0);
     fill(Green);

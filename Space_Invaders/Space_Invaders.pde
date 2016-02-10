@@ -8,6 +8,7 @@ boolean[] keys = new boolean[512];
 int PlayerScore;
 color Green;
 float boundaryLine;
+PFont font;
 void setup()
 {
   size(600, 600);
@@ -16,6 +17,8 @@ void setup()
   boundaryLine= height-50;
   gameObjects.add(ship);
   newWave();
+  //newBarrier(width/2, 500, 20, 50);
+  
   displayMenu();
 }
 
@@ -55,6 +58,8 @@ void keyPressed()
       if (GameSelected)
       {
         PlayerScore = 0;
+
+        
         gameLaunched = true;
         println("GAME");
       } else
@@ -116,15 +121,16 @@ void checkCollisions()
         //Blast hitting block
         if(other instanceof Block)
         {
-          if(other.hitPoints ==0)
+          if( go.pos.x <= other.pos.x + other.halfW && go.pos.x > other.pos.x && go.pos.y >= other.pos.y && go.pos.y <= other.pos.y + other.halfW)
           {
-            gameObjects.remove(go);
             gameObjects.remove(other);
+            gameObjects.remove(go);
+            i=0;
+            j=0;
           }
-          else
-          {
-            ((Block)other).hitPoints--;
-          }
+         
+         
+        }
       }
     }
     if( go instanceof AIShip)
@@ -139,11 +145,11 @@ void checkCollisions()
 
 void newBarrier(float x, float y, float h, float w)
 {
-  for(int i = 0; i < w, i++)
+  for(int i = 0; i < w; i++)
   {
     for(int j = 0; j < h; j++)
     {
-      Block b = new Block(x+i, y+j)
+      Block b = new Block(x+ (2 *i) , y + (2*j));
       gameObjects.add(b);
     }
   }

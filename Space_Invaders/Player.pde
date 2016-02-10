@@ -9,6 +9,6 @@ class Player
   Player(String name)
   {
     this.name = name;
-    score = 0;
+    score = PlayerScore;
   }
 }
