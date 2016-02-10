@@ -35,7 +35,7 @@ class Ship extends GameObject
   void update()
   {
     
-    println(elapsed);
+    
     if (keys[left])
     {
       pos.sub(PVector.mult(forward, speed));
