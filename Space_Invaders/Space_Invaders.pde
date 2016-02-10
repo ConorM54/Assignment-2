@@ -25,6 +25,10 @@ void draw()
   {
     launchGame();
   }
+  if(highscoreList)
+  {
+    displayHighscore();
+  }
 }
 
 void keyReleased()
@@ -115,7 +119,7 @@ void checkCollisions()
     {
       if( go.pos.y > boundaryLine)
       {
-        println("Game Over");
+        GameOver();
       }
     }
   }

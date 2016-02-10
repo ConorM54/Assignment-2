@@ -1,5 +1,4 @@
 boolean goRightAI = true;
-
 class AIShip extends Ship
 {
   boolean shoot;

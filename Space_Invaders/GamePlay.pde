@@ -1,8 +1,5 @@
 void launchGame()
-{
-  if (gameLaunched)
-  {
-     
+{ 
     background(0);
     stroke(255, 0, 0);
     line(0, boundaryLine, width, boundaryLine);
@@ -16,7 +13,7 @@ void launchGame()
       {
         if(((Ship)go).lives ==0)
         {
-          background(0);
+          GameOver();
         }
         for(int j =0; j < ((Ship)go).lives; j++)
         {
@@ -24,11 +21,14 @@ void launchGame()
         }
       }
     }
-    
+      
     for (int i = invaders.size() - 1; i >= 0; i --)
     {
       AIShip in = invaders.get(i);
-      
+      if(invaders.size() % 6 == 0)
+      {
+         //Increase invaders speed
+      }
       if (in.pos.x > width - in.halfW)
       {
         goRightAI = false;
@@ -63,5 +63,4 @@ void launchGame()
       counter =0;
     }
     counter++;
-  }
 }
