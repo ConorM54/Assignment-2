@@ -16,6 +16,7 @@ void GameOver()
   background(0);
   textAlign(CENTER);
   textFont(font, 40);
+  fill(Green);
   text("Game Over", width/2, height/3);
   textFont(font, 30);
   fill(255);
@@ -37,7 +38,7 @@ void GameOver()
   }
   fill(255);
   textSize(20);
-  text("Press any key to continue", 10, height -50);
+  text("Press enter to continue", 10, height -50);
   
 }
 
@@ -48,6 +49,5 @@ void displayHighscore()
   textAlign(CENTER);
   textSize(40);
   text("High Score: " + highscore, width/2 , height/3 );
-  
   
 }

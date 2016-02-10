@@ -44,7 +44,7 @@ class AIShip extends Ship
     if (shoot )
     {
       Blast blast = new Blast();
-      blast.pos.x = pos.x -halfW;
+      blast.pos.x = pos.x;
       blast.pos.y = pos.y;
       blast.forward = PVector.mult(down, 10);
       blast.c = 255;

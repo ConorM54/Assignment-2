@@ -22,28 +22,25 @@ void setup()
   newWave(initSpeed);
   loadHighscore();
   newShip();
-  
- 
   //newBarrier(width/2, 500, 20, 50);
-  
+
   displayMenu();
 }
 
 void draw()
 {
-  if(gameLaunched)
+  if (gameLaunched)
   {
     launchGame();
   }
-  if(highscoreList)
+  if (highscoreList)
   {
     displayHighscore();
   }
-  if(gameOverCheck)
+  if (gameOverCheck)
   {
     GameOver();
   }
-  
 }
 
 void keyReleased()
@@ -69,26 +66,30 @@ void keyPressed()
     {
       if (GameSelected)
       {
-        
+
         PlayerScore = 0;
         gameLaunched = true;
-        println("GAME");
       } else
       {
-        println("Highscore");
+        highscoreList = true;
       }
     }
   }
-  if(gameOverCheck)
+  if (gameOverCheck )
   {
-    println("GameOver");
-    newShip();
-    displayMenu();
-    gameOverCheck= false;
-    highscoreList = false;
-    
+    if (key == ENTER )
+    {
+      println("GameOver");
+      newShip();
+      displayMenu();
+      gameOverCheck= false;
+    }
   }
-  
+  if (highscoreList)
+  {
+    displayMenu();
+    highscoreList = false;
+  }
 }
 
 void checkCollisions()
@@ -131,33 +132,31 @@ void checkCollisions()
         {
           if (go.pos.x >= other.pos.x -other.halfW  && go.pos.x < other.pos.x+ other.halfW   && go.pos.y < other.pos.y + other.halfH && go.pos.y > other.pos.y - other.halfH  )
           {
-             if (! ((Ship)other).name.equals(((Blast)go).name) )
-             {
+            if (! ((Ship)other).name.equals(((Blast)go).name) )
+            {
               gameObjects.remove(go);
               ((Ship)other).lives--;
               i=0;
               j=0;
-             }
+            }
           }
         }
         //Blast hitting block
-        if(other instanceof Block)
+        if (other instanceof Block)
         {
-          if( go.pos.x <= other.pos.x + other.halfW && go.pos.x > other.pos.x && go.pos.y >= other.pos.y && go.pos.y <= other.pos.y + other.halfW)
+          if ( go.pos.x <= other.pos.x + other.halfW && go.pos.x > other.pos.x && go.pos.y >= other.pos.y && go.pos.y <= other.pos.y + other.halfW)
           {
             gameObjects.remove(other);
             gameObjects.remove(go);
             i=0;
             j=0;
           }
-         
-         
         }
       }
     }
-    if( go instanceof AIShip)
+    if ( go instanceof AIShip)
     {
-      if( go.pos.y > boundaryLine)
+      if ( go.pos.y > boundaryLine)
       {
         GameOver();
       }
@@ -167,11 +166,11 @@ void checkCollisions()
 
 void newBarrier(float x, float y, float h, float w)
 {
-  for(int i = 0; i < w; i++)
+  for (int i = 0; i < w; i++)
   {
-    for(int j = 0; j < h; j++)
+    for (int j = 0; j < h; j++)
     {
-      Block b = new Block(x+ (2 *i) , y + (2*j));
+      Block b = new Block(x+ (2 *i), y + (2*j));
       gameObjects.add(b);
     }
   }
@@ -196,15 +195,13 @@ void newWave(float AIspeed)
 void loadHighscore()
 {
   String lines[] = loadStrings("highscore.txt");
-  
-  
+
+
   String s= lines[0];
   highscore =(int) Float.parseFloat(s);
- 
 }
 void newShip()
 {
   Ship ship = new Ship( 'A', 'D', ' ', width/2, height - 20, Green, "Player One");
   gameObjects.add(ship);
 }
-    

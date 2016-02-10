@@ -19,7 +19,7 @@ void launchGame()
         {
           gameLaunched = false;
           i = 0;
-          GameOver();
+          gameOverCheck = true;
         }
         for(int j =0; j < ((Ship)go).lives; j++)
         {
@@ -62,7 +62,7 @@ void launchGame()
     }
     checkCollisions();
 
-    if (counter % 240 == 0)
+    if (counter % 60 == 0)
     {
       int i = (int)random(0, invaders.size());
       invaders.get(i).shoot = true;
