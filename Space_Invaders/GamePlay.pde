@@ -5,7 +5,10 @@ void launchGame()
     line(0, boundaryLine, width, boundaryLine);
     stroke(255);
     line(0, 75, width, 75);
-    text(PlayerScore, 50, 50);
+    textAlign(LEFT);
+    text("High Score: " +highscore, 10, 25);
+    text("Score: " +PlayerScore, 10, 50);
+    text("Lives: ", width/2 -75, 50);
     for (int i = gameObjects.size() - 1; i >= 0; i --)
     {
       GameObject go = gameObjects.get(i);

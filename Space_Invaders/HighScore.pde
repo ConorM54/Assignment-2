@@ -18,9 +18,23 @@ void GameOver()
   textFont(font, 40);
   text("Game Over", width/2, height/3);
   textFont(font, 30);
-  
+  fill(255);
+  textAlign(LEFT);
   text("Your Score: " + PlayerScore, 200, height/3 +100);
-  text("High Score: " + highscore, 200, height/3 +200);
+  if(PlayerScore > highscore)
+  {
+    highscore = PlayerScore;
+    fill(255);
+    text("NEW High Score: " + PlayerScore, 200, height/3 +200);
+    String lines[] = new String[1];
+    lines[0] = str(highscore);
+    saveStrings("highscore.txt", lines);
+  }
+  else
+  {
+   fill(255);
+   text("High Score: " + highscore, 200, height/3 +200);
+  }
   
   
   
