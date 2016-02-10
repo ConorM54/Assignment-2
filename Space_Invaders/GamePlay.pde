@@ -6,9 +6,10 @@ void launchGame()
     stroke(255);
     line(0, 75, width, 75);
     textAlign(LEFT);
+    fill(Green);
     text("High Score: " +highscore, 10, 25);
     text("Score: " +PlayerScore, 10, 50);
-    text("Lives: ", width/2 -75, 50);
+    text("Lives: ", width/2 -100, 50);
     for (int i = gameObjects.size() - 1; i >= 0; i --)
     {
       GameObject go = gameObjects.get(i);
@@ -22,7 +23,7 @@ void launchGame()
         }
         for(int j =0; j < ((Ship)go).lives; j++)
         {
-          drawShip( width/2 + (60 *j), 50, Green);
+          drawShip( width/2 + (60 *j), 45, Green);
         }
       }
     }

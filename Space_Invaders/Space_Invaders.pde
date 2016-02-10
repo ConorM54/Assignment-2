@@ -21,6 +21,7 @@ void setup()
   initSpeed = 10f;
   newWave(initSpeed);
   loadHighscore();
+  newShip();
   
  
   //newBarrier(width/2, 500, 20, 50);
@@ -75,7 +76,6 @@ void keyPressed()
   }
   if(gameOverCheck || highscoreList)
   {
-    displayMenu();
     gameOverCheck= false;
     highscoreList = false;
   }
@@ -177,7 +177,7 @@ void newWave(float AIspeed)
     color shipColor = color(255, 0, (50 * j));
     for (int i = 0; i< 7; i++)
     {
-      AIShip invader = new AIShip(30 +(50*i ), 100 + (30 * j), shipColor, (2000 - (300 *j)), "AI", AIspeed);
+      AIShip invader = new AIShip(30 +(50*i ), 100 + (30 * j), shipColor, (20 - (3 *j)), "AI", AIspeed);
       invaders.add(invader);
       gameObjects.add(invader);
     }

@@ -39,8 +39,6 @@ void GameOver()
   textSize(20);
   text("Press any key to continue", 10, height -50);
   
-  
-  
 }
 
 void displayHighscore()
