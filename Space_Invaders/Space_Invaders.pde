@@ -39,6 +39,11 @@ void draw()
   {
     displayHighscore();
   }
+  if(gameOverCheck)
+  {
+    GameOver();
+  }
+  
 }
 
 void keyReleased()
@@ -74,10 +79,14 @@ void keyPressed()
       }
     }
   }
-  if(gameOverCheck || highscoreList)
+  if(gameOverCheck)
   {
+    println("GameOver");
+    newShip();
+    displayMenu();
     gameOverCheck= false;
     highscoreList = false;
+    
   }
   
 }

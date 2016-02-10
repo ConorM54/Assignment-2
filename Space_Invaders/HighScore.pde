@@ -33,7 +33,7 @@ void GameOver()
   else
   {
    fill(255);
-   text("High Score: " + highscore, 200, height/3 +200);
+   text("High Score: " + highscore, 50, height/3 +200);
   }
   fill(255);
   textSize(20);
@@ -44,4 +44,10 @@ void GameOver()
 void displayHighscore()
 {
   background(0);
+  fill(255);
+  textAlign(CENTER);
+  textSize(40);
+  text("High Score: " + highscore, width/2 , height/3 );
+  
+  
 }

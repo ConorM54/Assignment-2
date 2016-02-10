@@ -29,6 +29,7 @@ class Ship extends GameObject
     halfH = H/2;
     score = 0;
     this.name = name;
+    speed = 1.5f;
     
   }
   
