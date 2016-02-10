@@ -73,7 +73,6 @@ class AIShip extends Ship
     rect(halfW, halfH, halfW -halfH, H);
     rectMode(CENTER);
     fill(0);
-    
     rect(-7, -4, 5, 5);
     rect(7, -4, 5,5);
     

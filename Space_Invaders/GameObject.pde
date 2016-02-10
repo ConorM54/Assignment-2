@@ -9,6 +9,7 @@ abstract class GameObject
   float H;
   float halfH;
   String name;
+  int hitPoints;
   GameObject()
   {
     // Constructor chaining
