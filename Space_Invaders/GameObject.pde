@@ -7,7 +7,8 @@ abstract class GameObject
   float speed = 5.0f;
   color c; 
   float H;
-   float halfH;
+  float halfH;
+  String name;
   GameObject()
   {
     // Constructor chaining

@@ -26,7 +26,20 @@ void draw()
     background(0);
     stroke(255, 0, 0);
     line(0, boundaryLine, width, boundaryLine);
+    stroke(255);
+    line(0, 75, width, 75);
     text(PlayerScore, 50, 50);
+    for (int i = gameObjects.size() - 1; i >= 0; i --)
+    {
+      GameObject go = gameObjects.get(i);
+      if( go.name == "Player One")
+      {
+        for(int j =0; j < ((Ship)go).lives; j++)
+        {
+          drawShip( width/2 + (60 *j), 50, Green);
+        }
+      }
+    }
     
     for (int i = invaders.size() - 1; i >= 0; i --)
     {

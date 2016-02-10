@@ -6,7 +6,7 @@ class Ship extends GameObject
    int lives;
    int elapsed;
    int score;
-   String name;
+  
   
    
    Ship()
@@ -24,7 +24,7 @@ class Ship extends GameObject
     this.fire = fire;
     this.c = c;
     forward = new PVector(1, 0);
-    lives = 10;
+    lives = 3;
     H = 20;
     halfH = H/2;
     score = 0;

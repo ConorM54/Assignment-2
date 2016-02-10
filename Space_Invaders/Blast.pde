@@ -25,7 +25,7 @@ class Blast extends GameObject
     //forward.mult(speed);
     pos.add(forward);
     
-    if ( pos.y < 0 || pos.y > height)
+    if ( pos.y < 75 || pos.y > height )
     {
       gameObjects.remove(this);
     }
