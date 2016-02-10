@@ -17,6 +17,11 @@ void GameOver()
   textAlign(CENTER);
   textFont(font, 40);
   text("Game Over", width/2, height/3);
+  textFont(font, 30);
+  
+  text("Your Score: " + PlayerScore, 200, height/3 +100);
+  text("High Score: " + highscore, 200, height/3 +200);
+  
   
   
 }

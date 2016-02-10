@@ -6,6 +6,7 @@ ArrayList<AIShip> invaders = new ArrayList<AIShip>();
 int counter = 0;
 boolean[] keys = new boolean[512];
 int PlayerScore;
+int highscore;
 color Green;
 float boundaryLine;
 PFont font;
@@ -17,6 +18,7 @@ void setup()
   boundaryLine= height-50;
   gameObjects.add(ship);
   newWave();
+  loadHighscore();
   //newBarrier(width/2, 500, 20, 50);
   
   displayMenu();
@@ -170,3 +172,14 @@ void newWave()
     }
   }
 }
+
+void loadHighscore()
+{
+  String lines[] = loadStrings("highscore.txt");
+  
+  
+  String s= lines[0];
+  highscore =(int) Float.parseFloat(s);
+ 
+}
+    
