@@ -16,6 +16,8 @@ void launchGame()
       {
         if(((Ship)go).lives ==0)
         {
+          gameLaunched = false;
+          i = 0;
           GameOver();
         }
         for(int j =0; j < ((Ship)go).lives; j++)
@@ -74,6 +76,6 @@ void launchGame()
     }
     if(invaders.size() == 1)
     {
-      invader.get(0).AISpeed = 23;
+      invaders.get(0).elapsed = 60;
     }
 }

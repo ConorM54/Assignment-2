@@ -20,12 +20,12 @@ void GameOver()
   textFont(font, 30);
   fill(255);
   textAlign(LEFT);
-  text("Your Score: " + PlayerScore, 200, height/3 +100);
+  text("Your Score: " + PlayerScore, 50, height/3 +100);
   if(PlayerScore > highscore)
   {
     highscore = PlayerScore;
     fill(255);
-    text("NEW High Score: " + PlayerScore, 200, height/3 +200);
+    text("NEW High Score: " + PlayerScore, 50, height/3 +200);
     String lines[] = new String[1];
     lines[0] = str(highscore);
     saveStrings("highscore.txt", lines);
@@ -35,6 +35,9 @@ void GameOver()
    fill(255);
    text("High Score: " + highscore, 200, height/3 +200);
   }
+  fill(255);
+  textSize(20);
+  text("Press any key to continue", 10, height -50);
   
   
   

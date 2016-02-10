@@ -1,6 +1,7 @@
 boolean gameLaunched = false;
 boolean highscoreList = false;
 boolean GameSelected = true;
+boolean gameOverCheck = false;
 ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
 ArrayList<AIShip> invaders = new ArrayList<AIShip>();
 int counter = 0;
@@ -11,16 +12,17 @@ color Green;
 float boundaryLine;
 PFont font;
 float initSpeed;
+
 void setup()
 {
   size(600, 600);
   Green = color(50, 255, 10);
-  Ship ship = new Ship( 'A', 'D', ' ', width/2, height - 20, Green, "Player One");
   boundaryLine= height-50;
-  gameObjects.add(ship);
   initSpeed = 10f;
   newWave(initSpeed);
   loadHighscore();
+  
+ 
   //newBarrier(width/2, 500, 20, 50);
   
   displayMenu();
@@ -47,7 +49,7 @@ void keyPressed()
 {
   keys[keyCode] = true;
 
-  if (!gameLaunched && !highscoreList)
+  if (!gameLaunched && !highscoreList && !gameOverCheck)
   {
     if (key == CODED)
     {
@@ -61,9 +63,8 @@ void keyPressed()
     {
       if (GameSelected)
       {
-        PlayerScore = 0;
-
         
+        PlayerScore = 0;
         gameLaunched = true;
         println("GAME");
       } else
@@ -72,6 +73,13 @@ void keyPressed()
       }
     }
   }
+  if(gameOverCheck || highscoreList)
+  {
+    displayMenu();
+    gameOverCheck= false;
+    highscoreList = false;
+  }
+  
 }
 
 void checkCollisions()
@@ -184,5 +192,10 @@ void loadHighscore()
   String s= lines[0];
   highscore =(int) Float.parseFloat(s);
  
+}
+void newShip()
+{
+  Ship ship = new Ship( 'A', 'D', ' ', width/2, height - 20, Green, "Player One");
+  gameObjects.add(ship);
 }
     
