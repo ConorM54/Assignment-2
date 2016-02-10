@@ -113,6 +113,18 @@ void checkCollisions()
              }
           }
         }
+        //Blast hitting block
+        if(other instanceof Block)
+        {
+          if(other.hitPoints ==0)
+          {
+            gameObjects.remove(go);
+            gameObjects.remove(other);
+          }
+          else
+          {
+            ((Block)other).hitPoints--;
+          }
       }
     }
     if( go instanceof AIShip)
@@ -125,7 +137,17 @@ void checkCollisions()
   }
 }
 
-
+void newBarrier(float x, float y, float h, float w)
+{
+  for(int i = 0; i < w, i++)
+  {
+    for(int j = 0; j < h; j++)
+    {
+      Block b = new Block(x+i, y+j)
+      gameObjects.add(b);
+    }
+  }
+}
 
 
 void newWave()

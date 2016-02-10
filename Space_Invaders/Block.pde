@@ -11,7 +11,7 @@ class Block extends GameObject
     this.pos.x = startX;
     this.pos.x = startY;
     hitPoints =2;
-    c = color(0, 0, 255);
+    
   }
   
   void update()
@@ -23,7 +23,7 @@ class Block extends GameObject
   {
     pushMatrix(); // reset the translation and rotation
     translate(pos.x, pos.y); 
-    fill(c);
+    fill(0, 100 * hitPoints, 255);
     stroke(c);
     rect(0, 0, 1, 1);
     popMatrix();
